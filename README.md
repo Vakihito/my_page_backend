@@ -3,4 +3,3 @@
 
 ### Goal of the project
 Let's create something fun 😄
-

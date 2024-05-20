@@ -1,0 +1,60 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
+{
+	"name": "Application-Backend",
+	"service": "app",
+	"initializeCommand": "dir",
+	"dockerComposeFile": "docker-compose.yml",
+	"workspaceFolder": "/workspace/${localWorkspaceFolderBasename}",
+	"settings": {
+		"python.defaultInterpreterPath": "/usr/local/bin/python",
+		"python.linting.enabled": true,
+		"editor.tabSize": 2,
+		"[python]": {
+			"editor.tabSize": 4
+		},
+		"python.linting.flake8Enabled": true,
+		"python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
+		"python.formatting.blackPath": "/usr/local/py-utils/bin/black",
+		"python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf",
+		"python.linting.banditPath": "/usr/local/py-utils/bin/bandit",
+		"python.linting.flake8Path": "/usr/local/py-utils/bin/flake8",
+		"python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
+		"python.linting.pycodestylePath": "/usr/local/py-utils/bin/pycodestyle",
+		"python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
+		"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint",
+		"python.formatting.blackArgs": [
+			"--line-length",
+			"100"
+		],
+		"python.linting.flake8Args": [
+			"--max-line-length=100"
+		],
+		"editor.rulers": [
+			100
+		],
+		"editor.formatOnSave": true,
+		"python.formatting.provider": "black",
+		"python.envFile": "${workspaceFolder}/.env"
+	},
+	"forwardPorts": [
+		5432,
+		9200
+	],
+	// "postCreateCommand": "poetry install",
+	"remoteUser": "root",
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "uname -a",
+
+	// Configure tool-specific properties.
+	// "customizations": {},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}

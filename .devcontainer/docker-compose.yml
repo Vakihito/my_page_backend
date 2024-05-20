@@ -1,0 +1,43 @@
+version: '3'
+services:
+  app:
+    init: true
+    restart: unless-stopped
+    ports:
+      - "5002:5001"
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    networks:
+      - net
+    volumes:
+      - ..:/workspace:cached
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
+  
+  postgres:
+    image: postgres:14
+    networks:
+      - net
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_USER: "postgres"
+      POSTGRES_DB: "postgres"
+    ports:
+      - '5433:5432'
+    volumes:
+      - postgres-data1:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: pg_isready -U postgres
+      interval: 2s
+      timeout: 3s
+      retries: 40
+
+networks:
+  net:
+    driver: bridge
+  
+volumes:
+  postgres-data1:
