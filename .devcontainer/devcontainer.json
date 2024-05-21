@@ -47,7 +47,8 @@
 		"vscode": {
 			"extensions": [
 				"ms-vscode.makefile-tools",
-				"DavidAnson.vscode-markdownlint"
+				"DavidAnson.vscode-markdownlint",
+				"ms-python.black-formatter"
 			]
 		}
 	},
