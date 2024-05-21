@@ -3,6 +3,8 @@ FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
 
 RUN pip install poetry==1.3.1
 RUN poetry config virtualenvs.create false
+RUN poetry lock --no-update --check
+RUN poetry install
 
 # Install wget
 RUN apt-get update \
