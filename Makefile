@@ -1,2 +1,2 @@
 run:
-	poetry run uvicorn src.main.app:app --reload
+	poetry run uvicorn src.main.main:app --reload
