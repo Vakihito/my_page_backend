@@ -43,6 +43,14 @@
 	],
 	// "postCreateCommand": "poetry install",
 	"remoteUser": "root",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-vscode.makefile-tools",
+				"DavidAnson.vscode-markdownlint"
+			]
+		}
+	},
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 	// "postCreateCommand": "poetry install",
