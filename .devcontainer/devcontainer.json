@@ -5,7 +5,8 @@
 	"service": "app",
 	"initializeCommand": "dir",
 	"dockerComposeFile": "docker-compose.yml",
-	"workspaceFolder": "/workspace/${localWorkspaceFolderBasename}",
+	"workspaceFolder": "/workspace",
+	"workspaceMount": "source=${localWorkspaceFolder}/sub-folder,target=/workspace,type=bind,consistency=delegated",
 	"settings": {
 		"python.defaultInterpreterPath": "/usr/local/bin/python",
 		"python.linting.enabled": true,
@@ -39,6 +40,7 @@
 	},
 	"forwardPorts": [
 		5432,
+		5433,
 		9200
 	],
 	// "postCreateCommand": "poetry install",
@@ -48,13 +50,25 @@
 			"extensions": [
 				"ms-vscode.makefile-tools",
 				"DavidAnson.vscode-markdownlint",
-				"ms-python.black-formatter"
+				"ms-python.black-formatter",
+				"bierner.emojisense",
+				"ms-vscode.remote-explorer",
+				"ms-python.isort",
+				"ms-python.vscode-pylance",
+				"ms-python.python",
+				"ms-python.debugpy",
+				"donjayamanne.python-environment-manager",
+				"mgesbert.python-path",
+				"donjayamanne.python-extension-pack",
+				"ms-azuretools.vscode-docker",
+				"ms-vscode-remote.remote-containers",
+				"vscode-icons-team.vscode-icons"
 			]
 		}
 	},
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
-	"postCreateCommand": "poetry install",
+	// "postCreateCommand": "poetry install",
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 	// Use 'postCreateCommand' to run commands after the container is created.
