@@ -62,7 +62,9 @@
 				"donjayamanne.python-extension-pack",
 				"ms-azuretools.vscode-docker",
 				"ms-vscode-remote.remote-containers",
-				"vscode-icons-team.vscode-icons"
+				"vscode-icons-team.vscode-icons",
+				"eamodio.gitlens",
+				"donjayamanne.githistory"
 			]
 		}
 	},
