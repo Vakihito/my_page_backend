@@ -4,7 +4,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 
 class CreateGoalInputSchema(BaseModel):
-    id: UUID = uuid4()
+    id: UUID = Field(default=None)
     title: str = Field(default=None)
     todo: str = Field(default=None)
     nottodo: str = Field(default=None)
