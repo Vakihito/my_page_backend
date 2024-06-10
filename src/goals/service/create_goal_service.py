@@ -4,17 +4,11 @@ from src.goals.infra import GoalsRepository
 
 
 class CreateGoalService:
-    def __init__(
-        self, create_goal_repository: GoalsRepository
-    ) -> CreateGoalResponseSchema:
+    def __init__(self, create_goal_repository: GoalsRepository) -> CreateGoalResponseSchema:
         self.create_goal_repository = create_goal_repository
 
-    def create(
-        self, create_goal_input: CreateGoalInputSchema
-    ) -> CreateGoalResponseSchema:
-        create_goal_reseponse = self.create_goal_repository.create_goal(
-            create_goal_input
-        )
+    def create(self, create_goal_input: CreateGoalInputSchema) -> CreateGoalResponseSchema:
+        create_goal_reseponse = self.create_goal_repository.create_goal(create_goal_input)
         if create_goal_reseponse is not None:
             create_goal_reseponse = {"created": True}
         else:

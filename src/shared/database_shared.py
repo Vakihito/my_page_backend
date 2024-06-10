@@ -33,6 +33,7 @@ Base = declarative_base()
 SessionLocal = get_session(settings.DATABASE_URL)
 TestingSessionLocal = get_session(settings.TEST_DATABASE_URL)
 
+
 def get_db_session():
     db = SessionLocal() if not settings.TESTING else TestingSessionLocal()
     try:

@@ -8,6 +8,8 @@ class Settings(BaseSettings):
     LOG_LEVEL: str = "INFO"
     LOG_LEVEL_DB: str = "ERROR"
     TESTING: bool = False
+    CHOKIDAR_USEPOLLING: bool = True
+    FAST_REFRESH: bool = True
 
     class Config:
         env_file = ".env"

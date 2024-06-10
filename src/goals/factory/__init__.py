@@ -1,1 +1,4 @@
 from .create_goal_factory import create_goal_router_factory
+from .update_goals_factory import update_goals_router_factory
+from .delete_goals_factory import delete_goals_router_factory
+from .search_goals_factory import search_goals_router_factory
