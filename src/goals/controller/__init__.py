@@ -2,3 +2,4 @@ from .create_goal_controller import CreateGoalController
 from .update_goals_controller import UpdateGoalsController
 from .delete_goals_controller import DeleteGoalsController
 from .search_goals_controller import SearchGoalsController
+from .get_by_user_goals_controller import GetByUserGoalsController

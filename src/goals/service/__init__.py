@@ -2,3 +2,4 @@ from .create_goal_service import CreateGoalService
 from .update_goals_service import UpdateGoalsService
 from .delete_goals_service import DeleteGoalsService
 from .search_goals_service import SearchGoalsService
+from .get_by_user_goals_service import GetByUserGoalsService

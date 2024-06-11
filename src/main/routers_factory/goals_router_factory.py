@@ -2,6 +2,7 @@ import src.goals.factory as goals_factory
 from src.main.routers_factory.routers_factory import RoutersFactory
 
 routers = [
+    goals_factory.get_by_user_goals_router_factory(),
     goals_factory.search_goals_router_factory(),
     goals_factory.delete_goals_router_factory(),
     goals_factory.update_goals_router_factory(),

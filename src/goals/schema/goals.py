@@ -4,14 +4,14 @@ from pydantic import BaseModel, ConfigDict, Field
 
 
 class CreateGoalInputSchema(BaseModel):
-    id: UUID = Field(default=None)
+    id: UUID | str = Field(default=None)
     title: str = Field(default=None)
     todo: str = Field(default=None)
     nottodo: str = Field(default=None)
     start_date: datetime = Field(default=None)
     end_date: datetime = Field(default=None)
     date_format: str = Field(default=None)
-    user_id: str = Field(default=None)
+    user_id: str | UUID = Field(default=None)
 
     class Config:
         json_schema_extra = {
