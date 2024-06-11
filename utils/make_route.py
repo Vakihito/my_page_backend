@@ -106,8 +106,8 @@ if not os.path.exists(main_folder):
     create_file(f"/workspace/src/main/routers_factory/{main_service}_router_factory.py")
     add_name_to_init(
         "src/main/routers_factory/__init__.py",
-        "{main_service}_router_factory",
-        "{main_service_cap}RouterFactory",
+        f"{main_service}_router_factory",
+        f"{main_service_cap}RouterFactory",
     )
 
 ########################
