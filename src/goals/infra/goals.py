@@ -21,13 +21,9 @@ class GoalsRepository:
 
     def create_goal(self, create_goal_input: CreateGoalInputSchema):
         if isinstance(create_goal_input.start_date, str):
-            create_goal_input.start_date = datetime.strptime(
-                create_goal_input.start_date, "%Y-%m-%d"
-            )
+            create_goal_input.start_date = datetime.strptime(create_goal_input.start_date, "%Y-%m-%d")
         if isinstance(create_goal_input.end_date, str):
-            create_goal_input.end_date = datetime.strptime(
-                create_goal_input.end_date, "%Y-%m-%d"
-            )
+            create_goal_input.end_date = datetime.strptime(create_goal_input.end_date, "%Y-%m-%d")
 
         new_goal = GoalsModel(**create_goal_input.model_dump())
         try:
@@ -41,9 +37,7 @@ class GoalsRepository:
             return None
         except SQLAlchemyError:
             self.db.rollback()
-            raise ApplicationException(
-                status_code=500, key="postgres_keyword_error_to_create"
-            )
+            raise ApplicationException(status_code=500, key="postgres_keyword_error_to_create")
         finally:
             self.db.close()
 
@@ -56,11 +50,7 @@ class GoalsRepository:
         for field, value in update_goals_input.__dict__.items():
             if (value is not None) and (field != "id"):
                 update_goals_dict[field] = value
-        stmt = (
-            dbUpdate(GoalsModel)
-            .where(GoalsModel.id == update_goals_input.id)
-            .values(**update_goals_dict)
-        )
+        stmt = dbUpdate(GoalsModel).where(GoalsModel.id == update_goals_input.id).values(**update_goals_dict)
         try:
             logger.info("update goals ")
             result = self.db.execute(stmt)
@@ -72,9 +62,7 @@ class GoalsRepository:
             logger.info("error log")
             return None
         except SQLAlchemyError as exc:
-            logger.error(
-                f"Error updating existing relation of goal on database: error = {exc}"
-            )
+            logger.error(f"Error updating existing relation of goal on database: error = {exc}")
             self.db.rollback()
             raise ApplicationException(status_code=500, key="error doing something")
         finally:
@@ -86,11 +74,7 @@ class GoalsRepository:
     def delete_goals(self, delete_goals_input: DeleteGoalsInputSchema):
         current_datetime = datetime.now()
         formatted_datetime = current_datetime.strftime("%Y-%m-%d")
-        stmt = (
-            dbUpdate(GoalsModel)
-            .where(GoalsModel.id == delete_goals_input.id)
-            .values(deleted_at=formatted_datetime)
-        )
+        stmt = dbUpdate(GoalsModel).where(GoalsModel.id == delete_goals_input.id).values(deleted_at=formatted_datetime)
         try:
             logger.info("delete goals")
             self.db.execute(stmt)
@@ -114,11 +98,7 @@ class GoalsRepository:
         try:
             logger.info("delete goals hard")
             # first find the data to delete
-            result = (
-                self.db.query(GoalsModel)
-                .filter(GoalsModel.id == delete_goals_input.id)
-                .first()
-            )
+            result = self.db.query(GoalsModel).filter(GoalsModel.id == delete_goals_input.id).first()
             self.db.delete(result)
             self.db.flush()
             self.db.commit()

@@ -5,9 +5,7 @@ from typing import List, Literal, Optional, Union
 
 
 class SearchGoalsService:
-    def __init__(
-        self, search_goals_repository: GoalsRepository
-    ) -> List[CreateGoalInputSchema]:
+    def __init__(self, search_goals_repository: GoalsRepository) -> List[CreateGoalInputSchema]:
         self.search_goals_repository = search_goals_repository
 
     def search_goals(self, **args) -> List[CreateGoalInputSchema]:
