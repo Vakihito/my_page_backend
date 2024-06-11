@@ -80,6 +80,8 @@ def is_file_empty(cur_file):
 service_cased = case_string(service_name)
 
 if not os.path.exists(main_folder):
+    create_folder(f"{main_folder}")
+
     create_folder(f"{main_folder}/controller")
     create_file(f"{main_folder}/controller/__init__.py")
 
@@ -96,12 +98,12 @@ if not os.path.exists(main_folder):
 
     create_folder(f"{main_folder}/schema")
     create_file(f"{main_folder}/schema/__init__.py")
+    create_file(f"{main_folder}/schema/{main_service}.py")
+
     create_folder(f"{main_folder}/service")
     create_file(f"{main_folder}/service/__init__.py")
 
-    create_file(
-        f"/workspace/src/main/routers_factory/{main_service}_router_factory.py"
-    )
+    create_file(f"/workspace/src/main/routers_factory/{main_service}_router_factory.py")
 
 ########################
 ## create crontroller ##
@@ -296,9 +298,7 @@ add_name_to_init(
 ##########################
 ## add new route factory ##
 ##########################
-router_file = (
-    f"/workspace/src/main/routers_factory/{main_service}_router_factory.py"
-)
+router_file = f"/workspace/src/main/routers_factory/{main_service}_router_factory.py"
 if is_file_empty(router_file):
     model_file_content_init = f"""import {pathing_name}.factory as {main_service}_factory
 from {pathing_name_src}.main.routers_factory.routers_factory import RoutersFactory
