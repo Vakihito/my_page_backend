@@ -278,13 +278,13 @@ add_name_to_init(
 return_dict = {"created": True}
 
 service_file_content = f"""from {pathing_name}.schema import {service_cased}InputSchema, {service_cased}ResponseSchema
-from {pathing_name}.model import GoalsModel
-from {pathing_name}.infra import GoalsRepository
+from {pathing_name}.model import {main_service_cap}Model
+from {pathing_name}.infra import {main_service_cap}Repository
 
 
 class {service_cased}Service:
     def __init__(
-        self, {service_name}_repository: GoalsRepository
+        self, {service_name}_repository: {main_service_cap}Repository
     ) -> {service_cased}ResponseSchema:
         self.{service_name}_repository = {service_name}_repository
 
