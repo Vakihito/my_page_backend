@@ -16,8 +16,12 @@ class UserRepository:
         self.db = db
 
     def create_user(self, create_user_input: CreateUserInputSchema):
+        new_user = UserModel(**create_user_input.model_dump())
         try:
             logger.info("create user ")
+            self.db.add(new_user)
+            self.db.commit()
+            self.db.refresh(new_user)
         except IntegrityError:
             self.db.rollback()
             logger.info("error log")

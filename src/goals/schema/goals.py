@@ -10,7 +10,8 @@ class CreateGoalInputSchema(BaseModel):
     nottodo: str = Field(default=None)
     start_date: datetime = Field(default=None)
     end_date: datetime = Field(default=None)
-    data_format: str = Field(default=None)
+    date_format: str = Field(default=None)
+    user_id: str = Field(default=None)
 
     class Config:
         json_schema_extra = {
@@ -20,7 +21,8 @@ class CreateGoalInputSchema(BaseModel):
                 "nottodo": "notodo",
                 "start_date": "2024-06-07",
                 "end_date": "2024-06-07",
-                "data_format": "weaks",
+                "date_format": "weaks",
+                "user_id": "fad324c1-2abb-420f-860f-3d9c99b7a9d4",
             }
         }
 

@@ -4,6 +4,7 @@ from logging.config import fileConfig
 # must import models to be detected on migrations
 from src.shared.database_shared import Base
 from src.goals.model import *
+from src.user.model import *
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
