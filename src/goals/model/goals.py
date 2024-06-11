@@ -13,7 +13,6 @@ class GoalsModel(Base):
 
     id = Column(
         UUID(as_uuid=True),
-        server_default=text("NOW()"),
         primary_key=True,
         index=True,
         nullable=False,
