@@ -95,6 +95,11 @@ if not os.path.exists(main_folder):
     create_folder(f"{main_folder}/model")
     create_file(f"{main_folder}/model/__init__.py")
     create_file(f"{main_folder}/model/{main_service}.py")
+    add_name_to_init(
+        f"{main_folder}/model/__init__.py",
+        f"{main_service}",
+        f"{main_service_cap}Model",
+    )
 
     create_folder(f"{main_folder}/schema")
     create_file(f"{main_folder}/schema/__init__.py")
@@ -242,6 +247,12 @@ from sqlalchemy import (
 
 class {main_service_cap}Model(Base):
     __tablename__ = "{main_service}"
+    id = = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        index=True,
+        nullable=False,
+    )
 """
     write_new_file(f"{main_folder}/model/{main_service}.py", model_file_content_init)
 
