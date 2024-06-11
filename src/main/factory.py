@@ -5,12 +5,16 @@ from src.main.routers_factory.routers_factory import RoutersFactory
 from fastapi import APIRouter
 
 
-def include_multiple_routers(routers: list[APIRouter], prefix: str, tags: list[str], app: FastAPI):
+def include_multiple_routers(
+    routers: list[APIRouter], prefix: str, tags: list[str], app: FastAPI
+):
     for router in routers:
         app.include_router(router=router, prefix=prefix, tags=tags)
 
 
-def include_routers_from_multiple_factories_into_app(app: FastAPI, factories: list[RoutersFactory]):
+def include_routers_from_multiple_factories_into_app(
+    app: FastAPI, factories: list[RoutersFactory]
+):
     for factory_router in factories:
         routers = factory_router.get_all_routers()
         prefix = factory_router.get_routers_prefix()
@@ -20,8 +24,14 @@ def include_routers_from_multiple_factories_into_app(app: FastAPI, factories: li
 
 def setup_router_factories(app: FastAPI):
     goals_router_factory = GoalsRouterFactory()
-    routers_factories: list[RoutersFactory] = [goals_router_factory]
+    user_router_factory = UserRouterFactory()
+    routers_factories: list[RoutersFactory] = [
+        goals_router_factory,
+        user_router_factory,
+    ]
 
-    include_routers_from_multiple_factories_into_app(app=app, factories=routers_factories)
+    include_routers_from_multiple_factories_into_app(
+        app=app, factories=routers_factories
+    )
 
     return app
