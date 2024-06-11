@@ -115,6 +115,8 @@ if not os.path.exists(main_folder):
         f"{main_service_cap}RouterFactory",
     )
 
+    add_new_import(f"/workspace/alembic/env.py", f"from {pathing_name}.model import *")
+
 ########################
 ## create crontroller ##
 ########################
